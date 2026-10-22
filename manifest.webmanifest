@@ -1,0 +1,1 @@
+{"name": "GYM LB", "short_name": "GYM LB", "start_url": "./", "display": "standalone", "theme_color": "#10223d", "background_color": "#0b1830", "icons": [{"src": "icon.svg", "sizes": "any", "type": "image/svg+xml"}]}

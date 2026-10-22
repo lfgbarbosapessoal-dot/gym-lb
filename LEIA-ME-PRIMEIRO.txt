@@ -1,0 +1,29 @@
+GYM LB — Publicação no GitHub Pages
+
+O Firebase do projeto gym-lb já está preenchido em firebase-config.js.
+NÃO é preciso npm, nem instalar software no computador.
+
+1. No repositório GitHub gym-lb, escolhe "uploading an existing file".
+2. Extrai este ZIP no computador.
+3. Seleciona e envia os ficheiros que estão DENTRO da pasta GYM_LB_Publicar
+   (index.html, sync.js, firebase-config.js, sw.js, manifest.webmanifest, icon.svg,
+   firestore.rules, instruções). Não envies só o ZIP nem a pasta exterior.
+4. Clica em "Commit changes".
+5. No repositório, Settings > Pages > Build and deployment:
+   Source = Deploy from a branch; Branch = main; Folder = /(root); Save.
+6. Aguarda a publicação. O endereço esperado é:
+   https://lfgbarbosapessoal-dot.github.io/gym-lb/
+7. Em Firebase Console > Authentication > Settings > Authorized domains,
+   acrescenta lfgbarbosapessoal-dot.github.io se ainda não constar.
+8. Abre a aplicação no Android e PC, cria conta / entra com o mesmo email.
+   Confirma o estado "Sincronizado" e testa com um registo simples.
+
+IMPORTANTE
+- Faz uma cópia de segurança JSON dos dados anteriores antes de usar a sincronização.
+- A sincronização ainda requer testes reais entre dispositivos; evita editar
+  simultaneamente o mesmo plano nos dois equipamentos.
+- Mantém o projeto Firebase no plano Spark; não atives faturação.
+- O treino em curso fica local ao telemóvel; plano e histórico sincronizam.
+- Os identificadores Firebase no JavaScript são públicos e NÃO são senhas.
+- A segurança depende das regras Firestore já publicadas no Firebase Console.
+- Exporta regularmente cópias de segurança pelo Histórico.

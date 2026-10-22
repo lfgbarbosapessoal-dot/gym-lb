@@ -1,0 +1,28 @@
+GYM LB — Android + PC com sincronização automática
+
+ANTES: exporta uma cópia de segurança JSON da versão anterior.
+
+1. Cria projeto Firebase gratuito (Spark): https://console.firebase.google.com/
+   Não atives faturação.
+2. Nas definições do projeto, adiciona uma aplicação Web e copia os valores
+   apiKey, authDomain, projectId e appId para firebase-config.js.
+3. Em Authentication > Sign-in method, ativa Email/Password.
+4. Em Firestore Database, cria a base de dados e, em Rules, cola
+   o conteúdo de firestore.rules e publica as regras.
+5. Coloca TODOS os ficheiros da pasta na raiz de um repositório GitHub público.
+   Settings > Pages > Deploy from a branch > main > / (root).
+6. Abre o endereço HTTPS no Chrome Android e instala pelo menu.
+   No PC abre o mesmo endereço. Inicia sessão com a mesma conta em ambos.
+7. Mantém cópias de segurança regulares no Histórico.
+
+NOTAS
+- Sem configurar Firebase, a app funciona apenas localmente.
+- Nunca publiques palavras-passe; os identificadores Firebase não são segredos.
+- As regras Firestore são indispensáveis à privacidade.
+- O treino em curso permanece local; o plano e histórico são sincronizados.
+- Evita alterar o plano simultaneamente em ambos os dispositivos.
+- Limite técnico: 1 MiB por documento no Firestore; adequado apenas a
+  histórico pessoal moderado. O histórico combina registos por data e nome.
+- A utilização pode ser gratuita no plano Spark dentro dos limites atuais,
+  mas as condições de terceiros podem mudar.
+- Não substitui avaliação individual por treinador qualificado.
