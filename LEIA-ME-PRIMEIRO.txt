@@ -27,3 +27,9 @@ IMPORTANTE
 - Os identificadores Firebase no JavaScript são públicos e NÃO são senhas.
 - A segurança depende das regras Firestore já publicadas no Firebase Console.
 - Exporta regularmente cópias de segurança pelo Histórico.
+
+ATUALIZAÇÃO VISUAL
+A caixa de sincronização passou a uma linha discreta. A conta e os botões
+estão em "Gerir conta e sincronização" (expansível). O funcionamento do
+Firebase não foi alterado. Para atualizar, carrega os ficheiros no mesmo
+repositório e confirma a substituição dos existentes.
