@@ -17,7 +17,7 @@ function runPersist(){if(runState)localStorage.setItem(RUN_ACTIVE_KEY,JSON.strin
 function runGpsText(t){const el=document.getElementById('runGpsStatus');if(el)el.textContent=t}
 function runPosition(pos){if(!runState||runState.status!=='running')return;const c=pos.coords,now=pos.timestamp||Date.now();if(!Number.isFinite(c.latitude)||!Number.isFinite(c.longitude))return;if(!Number.isFinite(c.accuracy)||c.accuracy>35){runGpsText('À espera de sinal GPS mais preciso…');return}
 const next={lat:c.latitude,lon:c.longitude,t:now,accuracy:c.accuracy};
-if(runState.last){const dt=(now-runState.last.t)/1000;if(dt<=0)return;const meters=runDistanceMeters(runState.last,next);if(meters<3)return;if(meters/dt>7){runGpsText('Leitura GPS irregular ignorada');return}if(meters>Math.max(12,c.accuracy+runState.last.accuracy)){runGpsText('A validar precisão GPS…');return}runState.meters+=meters;
+if(runState.last){const dt=(now-runState.last.t)/1000;if(dt<=0)return;const meters=runDistanceMeters(runState.last,next);if(meters<3)return;if(meters/dt>7){runGpsText('Leitura GPS irregular ignorada');return}if(meters>Math.max(40,dt*6.5)){runGpsText('A validar precisão GPS…');return}runState.meters+=meters;
 const completed=Math.floor(runState.meters/1000);runState.splits=runState.splits||[];
 if(completed>runState.splits.length){const km=runState.splits.length+1;const elapsed=Math.max(0,Date.now()-runState.started),prior=km===1?0:runState.splits[km-2].elapsedMs;const splitMs=elapsed-prior;runState.splits.push({km,elapsedMs:elapsed,splitMs});runSpeakKm(km,splitMs)}
 }

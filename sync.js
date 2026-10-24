@@ -16,12 +16,26 @@ if(firebaseConfig.apiKey==='COLOCA_AQUI'||firebaseConfig.projectId==='COLOCA_AQU
   let unsub=null,user=null,timer=null,applying=false;
   const local=()=>{try{return JSON.parse(localStorage.getItem('gym_lb_v2'))||{plan:null,history:[],records:{}}}catch{return {plan:null,history:[],records:{}}}};
   const merge=(a,b,preferLocal=false)=>{
-   const byId=new Map();
-   for(const h of (b.history||[]))byId.set(h.date+'|'+h.name,h);
-   for(const h of (a.history||[]))byId.set(h.date+'|'+h.name,h);
-   return {plan:(preferLocal?a.plan:b.plan)||a.plan||b.plan||null,
+   // A limpeza do histórico usa uma marca temporal partilhada para impedir
+   // que outro dispositivo volte a introduzir registos antigos.
+   const resetAt=Math.max(Number(a.historyResetAt)||0,Number(b.historyResetAt)||0);
+   const combine=(field,key)=>{
+    const byId=new Map();
+    for(const item of [...(b[field]||[]),...(a[field]||[])]){
+     if(!item||!item.date)continue;
+     const dateMs=Date.parse(item.date);
+     if(resetAt&&Number.isFinite(dateMs)&&dateMs<=resetAt)continue;
+     byId.set(key(item),item);
+    }
+    return [...byId.values()].sort((x,y)=>String(y.date).localeCompare(String(x.date)));
+   };
+   return {
+    plan:(preferLocal?a.plan:b.plan)||a.plan||b.plan||null,
     records:{...(b.records||{}),...(a.records||{})},
-    history:[...byId.values()].sort((x,y)=>String(y.date).localeCompare(String(x.date)))};
+    historyResetAt:resetAt,
+    history:combine('history',h=>h.date+'|'+(h.name||'')),
+    runs:combine('runs',r=>r.id||r.date)
+   };
   };
   async function push(){
    if(!user||applying)return;

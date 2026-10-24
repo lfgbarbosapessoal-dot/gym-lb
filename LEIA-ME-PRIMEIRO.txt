@@ -33,3 +33,13 @@ A caixa de sincronização passou a uma linha discreta. A conta e os botões
 estão em "Gerir conta e sincronização" (expansível). O funcionamento do
 Firebase não foi alterado. Para atualizar, carrega os ficheiros no mesmo
 repositório e confirma a substituição dos existentes.
+
+
+VERSÃO FINAL REVISTA
+1. Exporta uma cópia de segurança antes de qualquer limpeza.
+2. Abre Histórico > Limpar histórico de testes e escreve LIMPAR.
+3. Aguarda o estado Sincronizado na secção Firebase.
+4. Abre no segundo dispositivo e confirma o histórico vazio.
+5. Os planos e as cargas atuais não são apagados.
+6. As corridas e os treinos novos passam a ser sincronizados; a marca de limpeza impede o regresso de registos antigos.
+7. GPS, áudio em segundo plano e wake lock dependem das permissões e restrições do Android.
