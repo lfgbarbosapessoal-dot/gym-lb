@@ -30,7 +30,7 @@ if(firebaseConfig.apiKey==='COLOCA_AQUI'||firebaseConfig.projectId==='COLOCA_AQU
     return [...byId.values()].sort((x,y)=>String(y.date).localeCompare(String(x.date)));
    };
    return {
-    plan:(preferLocal?a.plan:b.plan)||a.plan||b.plan||null,
+    plan:(Number(a.plan?.revision||0)>Number(b.plan?.revision||0)?a.plan:Number(b.plan?.revision||0)>Number(a.plan?.revision||0)?b.plan:(preferLocal?a.plan:b.plan))||a.plan||b.plan||null,
     records:{...(b.records||{}),...(a.records||{})},
     historyResetAt:resetAt,
     history:combine('history',h=>h.date+'|'+(h.name||'')),
@@ -45,7 +45,7 @@ if(firebaseConfig.apiKey==='COLOCA_AQUI'||firebaseConfig.projectId==='COLOCA_AQU
     if(new Blob([JSON.stringify(payload)]).size>850000){status('Limite próximo','Exporta um backup; o histórico aproxima-se do limite do Firestore.');return}
     status('A sincronizar');
     await setDoc(doc(db,'users',user.uid),{data:payload,updatedAt:Date.now()});
-    localStorage.removeItem('gym_lb_sync_dirty');
+    if(JSON.stringify(local())===JSON.stringify(payload))localStorage.removeItem('gym_lb_sync_dirty');
     status('Sincronizado','Os teus dados estão disponíveis nos dois dispositivos.');
    }catch(e){localStorage.setItem('gym_lb_sync_dirty','1');status('Pendente',e.code||'Sem ligação. Dados locais preservados.')}
   }
