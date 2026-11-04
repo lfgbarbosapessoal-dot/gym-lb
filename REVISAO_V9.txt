@@ -1,0 +1,1 @@
+GYM LB V9 — RUN GPS: tenta manter ecrã ligado durante corrida; aviso quando GPS deixa de atualizar; indicação de precisão; filtro de saltos; não inventa quilómetros em interrupções. Limitação Android: PWA não garante GPS com ecrã bloqueado. Fazer backup antes de instalar. Testar ao ar livre com ecrã visível e depois bloqueado. Restante gestão de treinos preservada da V8.
