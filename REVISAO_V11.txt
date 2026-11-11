@@ -1,0 +1,1 @@
+GYM LB V11: corrige planos guardados cuja estrutura nao corresponde ao tipo escolhido; mantem historico e dados; verifica novas versoes e apresenta aviso de atualizacao; service worker de cache revisto. Nao modifica LB Nutrition. Exporta backup antes de atualizar.

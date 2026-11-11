@@ -74,6 +74,7 @@ if(firebaseConfig.apiKey==='COLOCA_AQUI'||firebaseConfig.projectId==='COLOCA_AQU
     if(changed){
      localStorage.setItem('gym_lb_v2',JSON.stringify(merged));
      if(typeof data!=='undefined')data=merged;
+     if(typeof repairPlan==='function')repairPlan();
      if(typeof renderHome==='function')renderHome();
      if(typeof renderHistory==='function')renderHistory();
     }
